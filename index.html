@@ -8,15 +8,613 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
+<meta name="description" content="Full Stack Web Developer portfolio of Ninoska Peralta, featuring responsive web apps and contact information."> 
+
 <title>Ninoska Peralta - Developer Portfolio</title> 
 
-<link rel="stylesheet" href="style.css"> 
+<link rel="icon" href="favicon.ico" type="image/x-icon"> 
+
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"> 
+
+<link href="https://cdn.jsdelivr.net/npm/devicons@1.8.0/css/devicons.min.css" rel="stylesheet"> 
+
+<style> 
+
+/* General Styles & Variables */ 
+
+:root { 
+
+--primary-color: #007BFF; 
+
+--secondary-color: #343A40; 
+
+--background-color: #F8F9FA; 
+
+--text-color: #333; 
+
+--card-bg: #FFFFFF; 
+
+--shadow: 0 4px 8px rgba(0,0,0,0.1); 
+
+--light-text: #E9ECEF; 
+
+--dark-text: #212529; 
+
+--error-color: #dc3545; 
+
+--success-color: #28a745; 
+
+} 
+
+ 
+
+body { 
+
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+
+line-height: 1.7; 
+
+color: var(--text-color); 
+
+background-color: #9099A2; 
+
+background-image: linear-gradient(to bottom, #96858f, #6d7993); 
+
+transition: background 0.3s ease, color 0.3s ease; 
+
+margin: 0; 
+
+padding-top: 70px; /* Offset for fixed navbar */ 
+
+} 
+
+ 
+
+/* Dark Mode Styles */ 
+
+body.dark-mode { 
+
+--primary-color: #0dcaf0; 
+
+--secondary-color: #e2e6ea; 
+
+--background-color: #121212; 
+
+--text-color: #e4e4e4; 
+
+--card-bg: #1f1f1f; 
+
+background-color: #121212; 
+
+background-image: none; 
+
+} 
+
+ 
+
+.dark-mode .navbar, 
+
+.dark-mode .project-card, 
+
+.dark-mode footer, 
+
+.dark-mode .content-section { 
+
+background-color: #1f1f1f; 
+
+color: #e4e4e4; 
+
+border-color: rgba(255, 255, 255, 0.1); 
+
+} 
+
+ 
+
+.dark-mode .nav-link, 
+
+.dark-mode .nav-branding, 
+
+.dark-mode .project-card h3, 
+
+.dark-mode .project-card p, 
+
+.dark-mode .submit-button, 
+
+.dark-mode h1, 
+
+.dark-mode h2, 
+
+.dark-mode h3, 
+
+.dark-mode p { 
+
+color: #e4e4e4; 
+
+} 
+
+ 
+
+.dark-mode .submit-button { 
+
+background-color: var(--primary-color); 
+
+} 
+
+ 
+
+.dark-mode .submit-button:hover { 
+
+background-color: #0aa8c9; 
+
+} 
+
+ 
+
+.dark-mode .contact-form input, 
+
+.dark-mode .contact-form textarea { 
+
+background-color: #2a2a2a; 
+
+color: #ffffff; 
+
+border: 1px solid #444; 
+
+} 
+
+ 
+
+.dark-mode .project-link { 
+
+color: var(--primary-color); 
+
+} 
+
+/* Navbar */ 
+
+.navbar { 
+
+position: fixed; 
+
+top: 0; 
+
+left: 0; 
+
+width: 100%; 
+
+display: flex; 
+
+justify-content: space-between; 
+
+align-items: center; 
+
+padding: 1rem 2rem; 
+
+background-color: var(--card-bg); 
+
+box-shadow: var(--shadow); 
+
+z-index: 1000; 
+
+transition: background-color 0.3s ease; 
+
+} 
+
+ 
+
+.nav-branding { 
+
+font-size: 1.5rem; 
+
+font-weight: bold; 
+
+text-decoration: none; 
+
+color: var(--secondary-color); 
+
+} 
+
+ 
+
+.nav-menu { 
+
+display: flex; 
+
+list-style: none; 
+
+margin: 0; 
+
+padding: 0; 
+
+gap: 2rem; 
+
+} 
+
+ 
+
+.nav-link { 
+
+text-decoration: none; 
+
+color: var(--secondary-color); 
+
+font-weight: 500; 
+
+transition: color 0.3s ease; 
+
+} 
+
+ 
+
+.nav-link:hover { 
+
+color: var(--primary-color); 
+
+} 
+
+ 
+
+.hamburger { 
+
+display: none; 
+
+cursor: pointer; 
+
+} 
+
+ 
+
+.bar { 
+
+display: block; 
+
+width: 25px; 
+
+height: 3px; 
+
+margin: 5px auto; 
+
+background-color: var(--secondary-color); 
+
+transition: all 0.3s ease-in-out; 
+
+} 
+
+/* Hero Section & Typewriter */ 
+
+.hero-section { 
+
+text-align: center; 
+
+padding: 6rem 2rem; 
+
+color: var(--light-text); 
+
+} 
+
+ 
+
+.hero-section h1 { 
+
+font-size: 3rem; 
+
+margin-bottom: 1rem; 
+
+color: white; 
+
+} 
+
+.typewriter-text { 
+
+border-right: .15em solid var(--primary-color); /* The cursor */ 
+
+animation: blink-caret .75s step-end infinite; 
+
+} 
+
+ 
+
+/* The typing effect */ 
+
+@keyframes blink-caret { 
+
+from, to { border-color: transparent } 
+
+50% { border-color: var(--primary-color); } 
+
+} 
+
+ 
+
+ 
+
+/* Content Sections */ 
+
+.content-section { 
+
+padding: 4rem 2rem; 
+
+margin: 2rem auto; 
+
+max-width: 1000px; 
+
+background-color: var(--card-bg); 
+
+border-radius: 8px; 
+
+box-shadow: var(--shadow); 
+
+} 
+
+ 
+
+h2 { 
+
+text-align: center; 
+
+margin-bottom: 2rem; 
+
+font-size: 2.5rem; 
+
+} 
+
+ 
+
+/* Projects Grid */ 
+
+.projects-grid { 
+
+display: grid; 
+
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+
+gap: 2rem; 
+
+} 
+
+ 
+
+.project-card { 
+
+background-color: var(--card-bg); 
+
+border: 1px solid #ddd; 
+
+border-radius: 8px; 
+
+padding: 1.5rem; 
+
+box-shadow: var(--shadow); 
+
+transition: transform 0.3s ease, box-shadow 0.3s ease; 
+
+} 
+
+ 
+
+.project-card:hover { 
+
+transform: translateY(-5px); 
+
+box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+
+} 
+
+ 
+
+.project-link { 
+
+margin-right: 1rem; 
+
+font-weight: bold; 
+
+color: var(--primary-color); 
+
+text-decoration: none; 
+
+} 
+
+ 
+
+/* Contact Form & Validation */ 
+
+.contact-form { 
+
+display: flex; 
+
+flex-direction: column; 
+
+gap: 1rem; 
+
+max-width: 600px; 
+
+margin: 0 auto; 
+
+} 
+
+ 
+
+.contact-form input, 
+
+.contact-form textarea { 
+
+padding: 0.8rem; 
+
+border-radius: 5px; 
+
+border: 1px solid #ccc; 
+
+font-family: inherit; 
+
+font-size: 1rem; 
+
+} 
+
+.contact-form input.invalid, 
+
+.contact-form textarea.invalid { 
+
+border-color: var(--error-color); 
+
+} 
+
+ 
+
+.error-message { 
+
+color: var(--error-color); 
+
+font-size: 0.875rem; 
+
+height: 1rem; /* Reserve space to prevent layout shift */ 
+
+margin-top: -0.5rem; 
+
+} 
+
+ 
+
+.submit-button { 
+
+padding: 0.8rem 1.5rem; 
+
+border-radius: 5px; 
+
+border: none; 
+
+background-color: var(--primary-color); 
+
+color: white; 
+
+font-size: 1rem; 
+
+cursor: pointer; 
+
+transition: background-color 0.3s ease; 
+
+} 
+
+ 
+
+.submit-button:hover { 
+
+opacity: 0.9; 
+
+} 
+
+ 
+
+/* Footer */ 
+
+footer { 
+
+text-align: center; 
+
+padding: 2rem; 
+
+margin-top: 2rem; 
+
+background-color: var(--secondary-color); 
+
+color: var(--light-text); 
+
+} 
+
+.dark-mode footer { 
+
+color: var(--text-color); 
+
+} 
+
+ 
+
+/* Responsive Design */ 
+
+@media (max-width: 768px) { 
+
+.nav-menu { 
+
+position: fixed; 
+
+left: -100%; 
+
+top: 70px; 
+
+flex-direction: column; 
+
+background-color: var(--card-bg); 
+
+width: 100%; 
+
+text-align: center; 
+
+transition: 0.3s; 
+
+box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05); 
+
+} 
+
+ 
+
+.nav-menu.active { 
+
+left: 0; 
+
+} 
+
+ 
+
+.nav-item { 
+
+padding: 1.5rem 0; 
+
+} 
+
+ 
+
+.hamburger { 
+
+display: block; 
+
+} 
+
+ 
+
+.hamburger.active .bar:nth-child(2) { 
+
+opacity: 0; 
+
+} 
+
+ 
+
+.hamburger.active .bar:nth-child(1) { 
+
+transform: translateY(8px) rotate(45deg); 
+
+} 
+
+ 
+
+.hamburger.active .bar:nth-child(3) { 
+
+transform: translateY(-8px) rotate(-45deg); 
+
+} 
+
+.hero-section h1 { 
+
+font-size: 2.5rem; 
+
+} 
+
+} 
+
+</style> 
 
 </head> 
 
 <body> 
-
- 
 
 <header> 
 
@@ -34,13 +632,19 @@
 
 </ul> 
 
-<div class="hamburger"> 
+<div style="display: flex; align-items: center;"> 
+
+<button id="theme-toggle" class="submit-button" style="margin-left: 1rem;">🌙 Dark Mode</button> 
+
+<div class="hamburger" aria-label="Toggle menu" aria-expanded="false"> 
 
 <span class="bar"></span> 
 
 <span class="bar"></span> 
 
 <span class="bar"></span> 
+
+</div> 
 
 </div> 
 
@@ -54,7 +658,7 @@
 
 <section id="hero" class="hero-section"> 
 
-<h1>Welcome To My Digital Workspace</h1> 
+<h1><span class="typewriter-text"></span></h1> 
 
 <p>A student developer dedicated to building complete web applications from the ground up.</p> 
 
@@ -62,55 +666,38 @@
 
  
 
-<section id="about" class="content-section"> 
+<section id="about" class="content-section" data-aos="fade-up"> 
 
 <h2>About Me</h2> 
 
-<p>A driven Computer Science student and Full-Stack Developer with hands-on experience in building complete web applications using the MERN stack (MongoDB, Express, React, Node.js). I am passionate about writing code and I am eager to apply my skills in a challenging and collaborative environment.</p> 
+<p>I'm a Full-Stack Developer and aspiring Project Manager focused on crafting scalable, user-friendly web applications. Currently completing full-stack and PM certifications through Microsoft, IBM, and Google, I’m ready to contribute to cross-functional teams and grow through hands-on collaboration.</p> 
 
-</section> 
+<a href="resume.pdf" download class="submit-button">Download My Resume</a> 
 
- <section id="projects" class="content-section"> 
+<div style="margin-top: 2rem; text-align: center;"> 
 
-<h2>My Projects</h2> 
+<h3>Tech Stack</h3> 
 
-<div class="projects-grid"> 
+<div style="font-size: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;"> 
 
-<div class="project-card"> 
+<i class="devicon-html5-plain colored" title="HTML5"></i> 
 
-<h3>Project One</h3> 
+<i class="devicon-css3-plain colored" title="CSS3"></i> 
 
-<p>TBD</p> 
+<i class="devicon-javascript-plain colored" title="JavaScript"></i> 
 
-<a href="#" class="project-link">View Project</a> 
+<i class="devicon-react-original colored" title="React"></i> 
 
-</div> 
+<i class="devicon-nodejs-plain colored" title="Node.js"></i> 
 
-<div class="project-card"> 
+<i class="devicon-express-original colored" title="Express"></i> 
 
-<h3>Project Two</h3> 
+<i class="devicon-mongodb-plain colored" title="MongoDB"></i> 
 
-<p>TBD</p> 
+<i class="devicon-git-plain colored" title="Git"></i> 
 
-<a href="#" class="project-link">View Project</a> 
+<i class="devicon-github-original colored" title="GitHub"></i> 
 
-</div> 
-
-<div class="project-card"> 
-
-<h3>Project Three</h3> 
-
-<p>TBD</p> 
-
-<a href="#" class="project-link">View Project</a> 
-
-</div>
-
-<div class="project-card">
-    <h3>Project Four</h3>
-    
-    <p>TBD</p>
-    <a href="#" class="project-link" target="_blank">View Project</a>
 </div> 
 
 </div> 
@@ -119,17 +706,95 @@
 
  
 
-<section id="contact" class="content-section"> 
+<section id="projects" class="content-section" data-aos="fade-up"> 
+
+<h2>My Projects</h2> 
+
+<div class="projects-grid"> 
+
+<div class="project-card"> 
+
+<h3>Task Tracker App</h3> 
+
+<p>A React + Firebase app for tracking daily tasks with add/delete functionality and real-time updates.</p> 
+
+<a href="#" class="project-link" target="_blank">View Live</a> 
+
+<a href="#" class="project-link" target="_blank">GitHub</a> 
+
+</div> 
+
+<div class="project-card"> 
+
+<h3>Weather Dashboard</h3> 
+
+<p>Vanilla JS app using OpenWeather API to show live weather by city, featuring localStorage and search history.</p> 
+
+<a href="#" class="project-link" target="_blank">View Live</a> 
+
+<a href="#" class="project-link" target="_blank">GitHub</a> 
+
+</div> 
+
+<div class="project-card"> 
+
+<h3>Recipe Blog</h3> 
+
+<p>A full-stack blog platform with Node.js, MongoDB, and EJS templating to post, edit, and delete recipes.</p> 
+
+<a href="#" class="project-link" target="_blank">View Live</a> 
+
+<a href="#" class="project-link" target="_blank">GitHub</a> 
+
+</div> 
+
+<div class="project-card"> 
+
+<h3>Mini Portfolio</h3> 
+
+<p>A responsive, mobile-first personal portfolio built with HTML, CSS Grid/Flexbox, and JavaScript.</p> 
+
+<a href="#" class="project-link" target="_blank">View Live</a> 
+
+<a href="#" class="project-link" target="_blank">GitHub</a> 
+
+</div> 
+
+</div> 
+
+</section> 
+
+ 
+
+<section id="contact" class="content-section" data-aos="fade-up"> 
 
 <h2>Message Me</h2> 
 
-<form class="contact-form"> 
+<form class="contact-form" id="contact-form" action="https://formspree.io/f/yourFormID" method="POST" novalidate> 
 
-<input type="text" name="name" placeholder="Your Name" required> 
+<div> 
 
-<input type="email" name="email" placeholder="Your Email" required> 
+<input type="text" id="name" name="name" placeholder="Your Name" required> 
 
-<textarea name="message" rows="5" placeholder="Your Message" required></textarea> 
+<div class="error-message" id="name-error"></div> 
+
+</div> 
+
+<div> 
+
+<input type="email" id="email" name="email" placeholder="Your Email" required> 
+
+<div class="error-message" id="email-error"></div> 
+
+</div> 
+
+<div> 
+
+<textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea> 
+
+<div class="error-message" id="message-error"></div> 
+
+</div> 
 
 <button type="submit" class="submit-button">Send Message</button> 
 
@@ -149,13 +814,326 @@
 
  
 
-<script src="script.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> 
+
+<script> 
+
+// Initialize Animate on Scroll library 
+
+AOS.init({ 
+
+duration: 1000, // values from 0 to 3000, with step 50ms 
+
+once: true, // whether animation should happen only once - while scrolling down 
+
+}); 
+
+ 
+
+document.addEventListener('DOMContentLoaded', function() { 
+
+// --- All your JS code will go here --- 
+
+ 
+
+// --- Mobile Hamburger Menu --- 
+
+const hamburger = document.querySelector(".hamburger"); 
+
+const navMenu = document.querySelector(".nav-menu"); 
+
+ 
+
+hamburger.addEventListener("click", () => { 
+
+const expanded = hamburger.classList.toggle("active"); 
+
+navMenu.classList.toggle("active"); 
+
+hamburger.setAttribute("aria-expanded", expanded); 
+
+}); 
+
+ 
+
+document.querySelectorAll(".nav-link").forEach(link => { 
+
+link.addEventListener("click", () => { 
+
+hamburger.classList.remove("active"); 
+
+navMenu.classList.remove("active"); 
+
+hamburger.setAttribute("aria-expanded", false); 
+
+}); 
+
+}); 
+
+ 
+
+// --- Theme Toggler (Light/Dark Mode) --- 
+
+const themeToggle = document.querySelector("#theme-toggle"); 
+
+const body = document.body; 
+
+ 
+
+// Function to apply the saved theme 
+
+const applyTheme = (theme) => { 
+
+if (theme === "dark") { 
+
+body.classList.add("dark-mode"); 
+
+themeToggle.textContent = "☀️ Light Mode"; 
+
+} else { 
+
+body.classList.remove("dark-mode"); 
+
+themeToggle.textContent = "🌙 Dark Mode"; 
+
+} 
+
+}; 
+
+ 
+
+// Event listener for the toggle button 
+
+themeToggle.addEventListener("click", () => { 
+
+const isDark = body.classList.toggle("dark-mode"); 
+
+const newTheme = isDark ? "dark" : "light"; 
+
+localStorage.setItem("theme", newTheme); 
+
+applyTheme(newTheme); 
+
+}); 
+
+ 
+
+// Apply saved theme on initial load 
+
+const savedTheme = localStorage.getItem("theme") || "light"; 
+
+applyTheme(savedTheme); 
+
+// --- Typewriter Effect --- 
+
+const typewriterElement = document.querySelector('.typewriter-text'); 
+
+const textArray = ["Welcome To My Digital Workspace", "Ninoska Peralta", "Full-Stack Developer"]; 
+
+let textArrayIndex = 0; 
+
+let charIndex = 0; 
+
+ 
+
+function type() { 
+
+if (charIndex < textArray[textArrayIndex].length) { 
+
+typewriterElement.textContent += textArray[textArrayIndex].charAt(charIndex); 
+
+charIndex++; 
+
+setTimeout(type, 100); 
+
+} else { 
+
+setTimeout(erase, 2000); // Wait 2s before erasing 
+
+} 
+
+} 
+
+ 
+
+function erase() { 
+
+if (charIndex > 0) { 
+
+typewriterElement.textContent = textArray[textArrayIndex].substring(0, charIndex - 1); 
+
+charIndex--; 
+
+setTimeout(erase, 50); 
+
+} else { 
+
+textArrayIndex = (textArrayIndex + 1) % textArray.length; 
+
+setTimeout(type, 500); // Wait 0.5s before typing next string 
+
+} 
+
+} 
+
+type(); // Start the effect 
+
+ 
+
+// --- Form Validation --- 
+
+const form = document.getElementById('contact-form'); 
+
+const nameInput = document.getElementById('name'); 
+
+const emailInput = document.getElementById('email'); 
+
+const messageInput = document.getElementById('message'); 
+
+ 
+
+const nameError = document.getElementById('name-error'); 
+
+const emailError = document.getElementById('email-error'); 
+
+const messageError = document.getElementById('message-error'); 
+
+ 
+
+// Function to show error 
+
+const showError = (input, errorElement, message) => { 
+
+input.classList.add('invalid'); 
+
+errorElement.textContent = message; 
+
+}; 
+
+ 
+
+// Function to clear error 
+
+const clearError = (input, errorElement) => { 
+
+input.classList.remove('invalid'); 
+
+errorElement.textContent = ''; 
+
+}; 
+
+// Function to validate email format 
+
+const validateEmail = (email) => { 
+
+const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
+
+return re.test(String(email).toLowerCase()); 
+
+}; 
+
+ 
+
+// Validate on form submit 
+
+form.addEventListener('submit', function(e) { 
+
+let isValid = true; 
+
+ 
+
+// Name validation 
+
+if (nameInput.value.trim() === '') { 
+
+showError(nameInput, nameError, 'Name is required.'); 
+
+isValid = false; 
+
+} else { 
+
+clearError(nameInput, nameError); 
+
+} 
+
+ 
+
+// Email validation 
+
+if (emailInput.value.trim() === '') { 
+
+showError(emailInput, emailError, 'Email is required.'); 
+
+isValid = false; 
+
+} else if (!validateEmail(emailInput.value)) { 
+
+showError(emailInput, emailError, 'Please enter a valid email address.'); 
+
+isValid = false; 
+
+} else { 
+
+clearError(emailInput, emailError); 
+
+} 
+
+// Message validation 
+
+if (messageInput.value.trim() === '') { 
+
+showError(messageInput, messageError, 'Message is required.'); 
+
+isValid = false; 
+
+} else { 
+
+clearError(messageInput, messageError); 
+
+} 
+
+ 
+
+if (!isValid) { 
+
+e.preventDefault(); // Prevent form submission if invalid 
+
+} 
+
+}); 
+
+// Real-time validation 
+
+nameInput.addEventListener('input', () => { 
+
+if (nameInput.value.trim() !== '') clearError(nameInput, nameError); 
+
+}); 
+
+ 
+
+emailInput.addEventListener('input', () => { 
+
+if (validateEmail(emailInput.value)) clearError(emailInput, emailError); 
+
+}); 
+
+messageInput.addEventListener('input', () => { 
+
+if (messageInput.value.trim() !== '') clearError(messageInput, messageError); 
+
+}); 
+
+ 
+
+}); 
+
+</script> 
 
 </body> 
 
 </html> 
 
  
-
 
  
